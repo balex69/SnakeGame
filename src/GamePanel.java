@@ -8,9 +8,8 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-    static final int SCREEN_WIDTH = 600, SCREEN_HEIGHT = 600, UNIT_SIZE = 25;
+    static final int SCREEN_WIDTH = 600, SCREEN_HEIGHT = 600, UNIT_SIZE = 25, DELAY = 70;
     static final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/UNIT_SIZE;
-    static final int DELAY = 100;
     final int x[] = new int[GAME_UNITS];
     final int y[] = new int[GAME_UNITS];
     int bodyParts = 6;
@@ -57,7 +56,8 @@ public class GamePanel extends JPanel implements ActionListener {
                 if (i == 0) {
                     g.drawImage(snakeHead, x[i], y[i], this);
                 } else {
-                    g.drawImage(eatenApple, x[i], y[i], this);
+                    g.setColor(new Color(0x75AF55));
+                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
             g.setColor(Color.red);
@@ -100,7 +100,6 @@ public class GamePanel extends JPanel implements ActionListener {
             applesEaten++;
             spawnApple();
         }
-
     }
     public void checkCollision() {
 
