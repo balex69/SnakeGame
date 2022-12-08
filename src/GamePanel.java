@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
@@ -21,7 +20,7 @@ public class GamePanel extends JPanel implements ActionListener {
     boolean running = false;
     Timer timer;
     Random random;
-    private BufferedImage gameApple = ImageIO.read(getClass().getResource("/res/img/gameApple.png"));
+    private BufferedImage gameApple = ImageIO.read(getClass().getResource("/res/img/gameApple.png")); // (c) Freepik for all images
     private BufferedImage eatenApple = ImageIO.read(getClass().getResource("/res/img/eatenApple.png"));
     private BufferedImage snakeHead = ImageIO.read(getClass().getResource("/res/img/snakeHead.png"));
     GamePanel() throws IOException {
