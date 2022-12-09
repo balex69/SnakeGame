@@ -2,8 +2,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        
+        GameFrame gameFrame = new GameFrame();
 
-        new GameFrame();
+        // if avec remise à 0 de la valeur, initialiser la valeur ici aussi
+
         /*TO BE DONE
 
         Ajouter deux boutons en Game Over :

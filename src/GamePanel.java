@@ -20,7 +20,6 @@ public class GamePanel extends JPanel implements ActionListener {
     Timer timer;
     Random random;
     private BufferedImage gameApple = ImageIO.read(getClass().getResource("/res/img/gameApple.png")); // (c) Freepik for all images
-    private BufferedImage eatenApple = ImageIO.read(getClass().getResource("/res/img/eatenApple.png"));
     private BufferedImage snakeHead = ImageIO.read(getClass().getResource("/res/img/snakeHead.png"));
     GamePanel() throws IOException {
 
@@ -28,7 +27,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setFocusable(true);
-        this.addKeyListener(new MyKeyAdapter());
+        this.addKeyListener(new GameKeyAdapter());
         startGame();
     }
 
@@ -37,7 +36,6 @@ public class GamePanel extends JPanel implements ActionListener {
         running = true;
         timer = new Timer(DELAY,this);
         timer.start();
-
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -131,6 +129,11 @@ public class GamePanel extends JPanel implements ActionListener {
         FontMetrics metricsSC = getFontMetrics(g.getFont());
         g.drawString("Score: "+applesEaten, (SCREEN_WIDTH - metricsSC.stringWidth("Score: "+applesEaten))/2, g.getFont().getSize());
 
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free",Font.BOLD,25));
+        FontMetrics metricsRT = getFontMetrics(g.getFont());
+        g.drawString("Try again?", (SCREEN_WIDTH - metricsRT.stringWidth("Try again?"))/2, 400);
+
     }
 
     @Override
@@ -142,7 +145,7 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         repaint();
     }
-    public class MyKeyAdapter extends KeyAdapter {
+    public class GameKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
